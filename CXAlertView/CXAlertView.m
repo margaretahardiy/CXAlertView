@@ -987,7 +987,9 @@ static BOOL __cx_statsu_prefersStatusBarHidden;
 {
     UIColor *containerBKGColor = _viewBackgroundColor ? _viewBackgroundColor : [UIColor whiteColor];
     self.blurView.backgroundView.backgroundColor = containerBKGColor;
-    self.containerView.backgroundColor = [containerBKGColor colorWithAlphaComponent:_showBlurBackground ? 0. : 1.];;
+    if(_viewBackgroundColor != [UIColor clearColor]) {
+        self.containerView.backgroundColor = [containerBKGColor colorWithAlphaComponent:_showBlurBackground ? 0. : 1.];
+    }
 
     if (_showBlurBackground) {
         if (self.blurView == nil) {
